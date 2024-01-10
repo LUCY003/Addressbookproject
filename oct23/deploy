@@ -1,9 +1,9 @@
 pipeline {
     agent any
-    tools {
-      maven 'mymaven'
-    }
-    stages {
+    tools {  
+     maven 'mymaven'
+ }
+ stages {
         stage('Build') {
             steps {
                 sh 'mvn clean package'
@@ -11,8 +11,8 @@ pipeline {
         }
 stage('Deploy') {
             steps {
-                sshagent(['86dde5da-9511-400e-bb0c-2aa1f8c36bd3']) {
-    sh "scp -o StrictHostKeyChecking=no target/*.war ansadmin@3.14.71.226:/home/ansadmin/tomcat/webapps"
+                sshagent(['04722abd-dba5-4549-99b7-0f9f2e998c39']) {
+    sh "scp -o StrictHostKeyChecking=no target/*.war ansadmin@18.208.218.97:/home/ansadmin/tomcat/webapps"
 }
             }
         }
